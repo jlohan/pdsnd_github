@@ -168,12 +168,10 @@ def user_stats(df, city):
     if city != 'washington':
         print(df['Gender'].value_counts(dropna=True))
     # Display earliest, most recent, and most common year of birth
-        year_earliest = df['Birth Year'].min().astype(int)
-        year_recent = df['Birth Year'].max().astype(int)
-        year_common = df['Birth Year'].mode()[0].astype(int)
-        print('The earliest user year of birth is {}'.format(year_earliest))
-        print('The most recent user year of birth is {}'.format(year_recent))
-        print('The most common user year of birth is {}'.format(year_common))
+        #   year_earliest = df['Birth Year'].min().astype(int)
+        print('The earliest user year of birth is {}'.format(df['Birth Year'].min().astype(int)))
+        print('The most recent user year of birth is {}'.format(df['Birth Year'].max().astype(int)))
+        print('The most common user year of birth is {}'.format(df['Birth Year'].mode()[0].astype(int)))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
