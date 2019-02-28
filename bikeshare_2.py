@@ -138,16 +138,18 @@ def trip_duration_stats(df):
     start_time = time.time()
 
     # display total travel time
-    tot_trip_secs = df['Trip Duration'].sum()
-    mins, secs = divmod(tot_trip_secs, 60)
+    tot_secs = df['Trip Duration'].sum()
+    #print(tot_secs)
+    mins, secs = divmod(tot_secs, 60)
     hr, min = divmod(mins, 60)
-    print('The total travel duration is {} seconds or {} hours, {} minutes and {} seconds'.format(tot_trip_secs, hr, min, int(secs)))
+    print('The total travel duration is {} seconds or {} hours, {} minutes and {} seconds'.format(tot_secs, hr, min, int(secs)))
     
     # display mean travel time
-    avg_trip_secs = df['Trip Duration'].mean()
-    mins, secs = divmod(avg_trip_secs, 60)
+    avg_secs = df['Trip Duration'].mean()
+    #print(avg_secs)
+    mins, secs = divmod(avg_secs, 60)
     hr, min = divmod(mins, 60)
-    print('The average travel duration is {} seconds or {} hours, {} minutes and {} seconds'.format(avg_trip_secs, hr, min, int(secs)))
+    print('The average travel duration is {} seconds or {} hours, {} minutes and {} seconds'.format(avg_secs, hr, min, int(secs)))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -166,12 +168,10 @@ def user_stats(df, city):
     if city != 'washington':
         print(df['Gender'].value_counts(dropna=True))
     # Display earliest, most recent, and most common year of birth
-        year_earliest = df['Birth Year'].min().astype(int)
-        year_recent = df['Birth Year'].max().astype(int)
-        year_common = df['Birth Year'].mode()[0].astype(int)
-        print('The earliest user year of birth is {}'.format(year_earliest))
-        print('The most recent user year of birth is {}'.format(year_recent))
-        print('The most common user year of birth is {}'.format(year_common))
+        #   year_earliest = df['Birth Year'].min().astype(int)
+        print('The earliest user year of birth is {}'.format(df['Birth Year'].min().astype(int)))
+        print('The most recent user year of birth is {}'.format(df['Birth Year'].max().astype(int)))
+        print('The most common user year of birth is {}'.format(df['Birth Year'].mode()[0].astype(int)))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
